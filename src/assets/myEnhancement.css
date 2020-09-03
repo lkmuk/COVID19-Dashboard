@@ -1,0 +1,229 @@
+/* my custom CSS to override https://codepen.io/chriddyp/pen/bWLwgP.css 
+attention:;
+ 1. this css shall not be included in the external_stylesheets list at the beginning of app.py
+ 2. instead save this file into <directory of the app.py>/assets/my.css
+ 3. for this, you also need to pass in the magic 'name', 
+    i.e. app=dash.Dash(__name__, ...)
+*/
+
+
+body{
+  display: block;
+	margin: 0px;
+	padding-left: 8px;
+  padding-right: 8px;
+  font-family: "Avenir Next","Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial;
+}
+
+a{
+	color: inherit;
+	font-style: italic;
+	text-decoration: none;
+}
+
+h2{
+  padding-top: 2px;
+  padding-bottom: 2px;
+  text-align: center;
+  color: black;
+  font-weight: 700;
+  font-size: 18pt;
+}
+
+header  {
+  position: fixed;
+  top: 0px;
+
+  width: 100%;
+  margin-left: -8px;
+  margin-right: -8px;
+  height: auto;
+  background-color:rgb(200,10,10);
+  
+
+  padding-top: 3 em;
+  text-align: center;
+ 
+  font-weight: 800;
+  font-size: 40px;
+  color: white;
+
+  z-index: 3;
+}
+header > .creator{
+  background-color: red;
+  text-align: right;
+  padding-right: 1em;
+
+  font-size: 12pt;
+  font-style: italic;
+  font-weight: 600;
+  color: white;
+}
+
+.selectCountry{ /*now just inside the header*/
+  display: block;
+  width: 100%;
+  /*margin-right: 16px;*/
+
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 4px lightgray;
+  background-color: white;
+
+  color: black;
+  font-size: 14pt;
+  font-weight: 500;
+
+  text-align: left;
+  /*align-content: center;*/
+  padding: 8pt;
+}
+
+.dropBoxContainer {
+  /*display: inline-flex;*/
+  display: block;
+  margin-left: 3em;
+  margin-right: 3em;
+  padding: 6px;
+  /*max-width: 700px;*/
+}
+
+.main{
+  position: absolute;
+  top: 280px; /*  to compensate for header in old school way */
+  margin-bottom: 12em;  /*to compensate for footer*/
+  width: 100%;
+  padding-right: 12px;
+  padding-bottom: 1em;
+  z-index: 1;
+  line-height: 1.5;
+}
+
+.GUI_settings_div{
+  margin-left: 3em;
+  margin-right: 3em;
+  padding-top:    2px;
+  padding-bottom: 1em;
+  padding-left:  3em;
+  padding-right: 3em;
+
+  /*background-color: orange;*/
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px lightgray;
+}
+
+.GUI_settings_div > details{ /*quick dirty*/
+  border: 0;
+  box-shadow: 0;
+  margin-right: 0;
+}
+
+.GUI_settings_div > details > summary{ /*quick dirty*/
+  font-size: 12pt;
+  margin-top: 3px;
+}
+
+details{
+  display: block;
+  padding: 8px;
+}
+
+details{
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 4px lightgray;
+  margin-right: 16px;
+}
+
+details > summary{
+  width: 100%,
+
+  border: 1px solid lightgray;
+
+  font-size: 18pt;
+  font-weight: 700;
+
+}
+
+
+
+.warning{
+  display: block;
+  margin: 3px;
+  margin-top: 1em;
+  margin-left: 3em ;
+
+  margin-right: 200px;
+  min-width: 400px;
+  max-width: 600px;
+  
+  padding: 6px;
+
+  border: 2px solid red;
+  border-radius: 12px;
+
+  background-color: yellow;
+  font-style: italic;
+  font-weight: 600;
+  color: darkred;
+}
+
+.warning::before{ /*preffix*/
+  color: black;
+  font-weight: bold;
+  font-style: normal;
+  content:"Plausibility of the identified parameters:";
+  display: block;
+}
+
+footer{
+  position: fixed;
+  bottom: 0px;
+
+  width: 100%;
+  margin-left: -8px;
+  margin-right: -8px;
+  height: auto;
+  background-color:rgb(200,10,10);
+
+  padding: 6px;
+  text-align: left;
+ 
+  font-weight: normal;
+  font-size: 12pt;
+  color: white;
+
+  z-index: 2;
+}
+
+footer > p{
+	display: inline;
+	font-size: inherit;
+	font-weight: inherit;
+	color: inherit;
+}
+
+
+
+/*specific to the Dash's Calendar (DataRangePicker)*/
+/*overriding defaults*/
+.CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
+  background: red;
+  border: 1px double black;
+  color: white;
+  font-family: "Avenir Next","Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial;
+  font-weight: bold;
+  /*font-style: italic;*/
+}
+
+.CalendarDay__selected_span:active, .CalendarDay__selected_span:hover {
+  background: rgb(240,0,0);
+  border: 1px double white;
+  color: white;
+}
+
+.CalendarDay__selected_span {
+  background: rgb(230,150,150);
+  border: 1px double gray;
+  color: gray;
+}

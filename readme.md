@@ -35,25 +35,42 @@ A quick demo can be found in the first 3 minutes of [this video](https://youtu.b
 
 
 
-## Requirements for running the application
+## Setting up the project
 
-Below are the minimal requirements for running the application (any one of `src/app_full.py`, `src/app_basics.py` or `src/app_SIR_country.py`)
+Below are the steps required for running the application (any one of `src/app_full.py`, `src/app_basics.py` or `src/app_SIR_country.py`)
 
-* git (for updating our raw (csv) data), and
+0. Before beginning the setup, ensure your computer has *git* (for proper cloning of the repository & updating the raw csv data in form of *git submodule* dependency), *python 3* and  *pip3*.
 
-* the python environment. Set it up with the following commands
-  
-  ```bash
-  $ python3 -m venv venv
-  $ source venv/bin/activate
-  $ pip3 install -r dependencies.txt
-  ```
+1. Set up your local repository in your desired directory.
+   
+   ```bash
+   $ git clone --recurse-submodules https://github.com/lkmuk/COVID19-Dashboard.git
+   $ cd COVID19-Dashboard/data_raw/COVID-19
+   $ git checkout master
+   ```
+   
+2. Set up the virtual environment. (continued from above)
+   
+   ```bash
+   $ cd ../..
+   $ python3 -m venv venv
+   $ source venv/bin/activate
+   $ pip3 install -r dependencies.txt
+   ```
+   
+3. Run any one of the three applications. This can be, for example: (continued from above)
 
->  If you also want to execute the test scripts in the source folder and the [notebooks](/notebooks), please also install also *matplotlib* and *jupyter notebook* respectively in the virtual environment.
+   ```bash
+   $ cd src
+   $ python3 app_full.py
+   ```
+   note: because of the uses of **relative paths** inside the applications `app_<full/...>.py` for accessing both the raw and processed data, please call the application **only when** you are currently in the directory of `src`.
+
+> If you also want to execute the test scripts in the source folder and the [notebooks](/notebooks), please also install also *matplotlib* and *jupyter notebook* respectively in the virtual environment.
 
 
 
-## To do/ Potential enhancements
+## To-do/ Potential enhancements
 
 This apparently, concerns only part 2.
 

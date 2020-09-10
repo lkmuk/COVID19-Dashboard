@@ -72,7 +72,7 @@ df_SIR_para_col_Key_List_wo_country = [
 df_SIR_para_col_Name_4_dash=(
 	'country',
 	'population^^',
-	'Pandemic began on^',
+	'Pandemic began on^^^',
 	'Beta^ [1/day]',   
 	'Gamma^ [1/day]', 
 	'Contact Ratio^ [-]',

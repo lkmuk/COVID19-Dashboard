@@ -5,22 +5,31 @@ from datetime import datetime
 
 def getData_JohnHopk(updateData=True):
 	"""
-	This is a subroutine that 
-	1. updates the local copy of the time series of
-	   confirmed coronavirus cases, ...
-	   published by John Hopkins University via GITHUB,
-	2. and then processes these data (for each subject) into the following table,  
+	Updates the data of 3 subjects from the COVID-19 repository
+	publishedby CSSE, John Hopkins University;
+	then for each subject process the data and save them. 
+	
+	The three subjects are the time series of
+	* (cumulative) confirmed cases
+	* (cumulative) deaths
+	* (cumulative) recovery cases
+
+	The format of the processed data for each of these 3 subjects:
 		| date (as index) | Afghanistan | Albania | ... |
 		| --------------- | ----------- | ------- | --- |
-		| 2020-01-22      | ...         | ...     | ... | 
-		| 2020-01-22      | ...         | ...     | ... | 
+		| "2020-01-22"    | ...         | ...     | ... | 
+		| "2020-01-23"    | ...         | ...     | ... | 
 		| ...             | ...         | ...     | ... | 
-		| (Today)         | ...         | ...     | ... | 
-	3. finally saves the processed table as a csv file.
+		| (Yesterday)     | ...         | ...     | ... | 
 	
+	Lastly, 
+	the empirical time series of the number of infected and "removed" people
+	are derived for each country.
+	The respecitve result is saved in the same format as those 3 subjects.
+
 	Parameters
     ----------
-	updateData:	boolean
+	updateData:	boolean, optional
 		(for testing, advantageous not to update)
 
 	Returns
@@ -31,12 +40,18 @@ def getData_JohnHopk(updateData=True):
 
     File outputs
     -------------
-	data_proc/COVID_time_COVID19_confirmed.csv
-	data_proc/COVID_time_COVID19_deaths.csv
-	data_proc/COVID_time_COVID19_recovered.csv
-	data_proc/COVID_time_COVID19_SIR_I.csv (export not implemented)
-	data_proc/COVID_time_COVID19_SIR_R.csv (export not implemented)
-	data_proc/country_info.csv
+	../data_proc/COVID_time_COVID19_confirmed.csv
+	../data_proc/COVID_time_COVID19_deaths.csv
+	../data_proc/COVID_time_COVID19_recovered.csv
+	../data_proc/COVID_time_COVID19_SIR_I.csv (export not implemented)
+	../data_proc/COVID_time_COVID19_SIR_R.csv (export not implemented)
+	../data_proc/country_info.csv
+
+	Remarks
+	-------------
+	this script uses relative path so please only call this function 
+	when the current directory is this directory (i.e. `src`).
+
 	"""
 
 
@@ -45,10 +60,14 @@ def getData_JohnHopk(updateData=True):
 	# -----------------------
 	# Step 1: Updating local copies of the CSV Files that are published by John Hopkins University
 	if updateData:
-		try:
-			os.system('sh updateRawJHU.sh' )
-		except:
-			print("Update script file not found! ")
+		# try:
+		# 	os.system('sh updateRawJHU.sh' )
+		# except:
+		# 	print("Update script file not found! ")
+		os.system('git submodule update --remote') 
+		# thereby eliminating the need to change to the submodule directory 
+		# followed by calling git pull.
+	
 
 	# -----------------------
 	# Step 2: Processing Data from the 3 CSV files
